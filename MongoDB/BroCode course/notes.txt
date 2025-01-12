@@ -1,0 +1,87 @@
+
+-----How to show and navigate databases-----
+show dbs
+use school (If the name of the database doesn't exist, it will be created automatically)
+db.createCollection("students")
+db.dropDatabase()
+
+-----How to insert documents-----
+db.students.insertOne({name:"Spongebob", age:30, gpa:3.2})
+db.students.find()
+
+db.students.insertMany([{name:"Patrick", age:38, gpa:1.5}, {name:"Sandy", age:27, gpa:4.0}, {name:"Gary", age:18, gpa:2.5}])
+db.students.find()
+
+-----Data types-----
+db.students.insertOne({name:"Larry",
+                       age: 32,
+                       gpa: 2.8,
+                       fullTime: false,
+                       registerDate: new Date(),
+                       graduationDate: null,
+                       courses: ["Biology", "Chemistry", "Calculus"]
+                       address: {street:"123 Fake ST.,
+                                 city:"Bikini Bottom,
+                                 zip: 12345}
+                       })
+
+
+-----Sorting and limiting-----
+Ascending order             = db.students.find().sort({name:1})
+Descending order            = db.students.find().sort({gpa:-1})
+
+Limiting results            = db.students.find().limit(2)
+sorted limited result       = db.students.find().sort({gpa:-1}).limit(1)
+
+
+-----Find documents-----
+db.students.find({name:"Spongebob"})
+db.students.find({name:"Spongebob", age:30})
+
+db.students.find({query}, {projection})
+db.students.find({}, {name:true, gpa:true})
+db.students.find({}, {_id:false, name:true, gpa:true})
+
+
+
+-----How to update documents in MongoDB------
+db.students.updateOne({filter}, {update})
+db.students.updateOne({name:"Spongebob"}, {$set:{fullTime:true}})
+
+db.students.updateMany({filter}, {update})
+db.students.updateMany({}, {$set:{fullTime:true}})
+
+-----How to delete documents in MongoDB-----
+db.students.deleteOne({name:"Gary"})
+db.students.deleteMany({registerDate:{}$exists:false})
+
+-----Comparison operators-----
+Not equal to                = db.students.find({name:{$ne:"Spongebob"}})
+Less than                   = db.students.find({age:{$lt: 20"}})
+Less than equal to          = db.students.find({age:{$lte: 27"}})
+Greater than                = db.students.find({age:{$gt:27}})
+Greater than equal to       = db.students.find({age:{$gte:27}})
+Multiple operators          = db.students.find({gpa:{$gte:3, $lte:4}})
+In                          = db.students.find({name:{$in:["Spongebob", "Patrick", "Sandy"]}})
+Nin                         = db.students.find({name:{$nin:["Spongebob", "Patrick", "Sandy"]}})
+
+-----Logical operators-----
+And                         = db.students.find({$and:[{fullTime:true}, {age:{$lte:22}}]})
+Or                          = db.students.find({$or:[{fullTime:true}, {age:{$lte:22}}]})
+Nor (Neither true)          = db.students.find({$nor:[{fullTime:true}, {age:{$lte:22}}]})
+Not (Includes null)         = db.students.find({age:{$not:{$gte:30}}})
+
+-----Indexes-----
+db.students.find({name:"Larry"}).explain("executionStats")
+create alphabetical Index   = db.students.createIndex({name: 1})
+create analphabetic Index   = db.students.createIndex({name: -1})
+db.students.find({name:"Larry"}).explain("executionStats")
+db.students.getIndexes()
+db.students.dropIndex("name_1")
+
+-----Collections-----
+db.createCollection("teachers")
+db.createCollection("teachers", {capped:true, size:10000000, max:100})
+db.createCollection("teachers", {capped:true, size:10000000, max:100}, {autoIndexId:false})
+db.createCollection("courses")
+db.courses.drop()

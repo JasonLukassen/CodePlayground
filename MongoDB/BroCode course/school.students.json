@@ -1,0 +1,95 @@
+[{
+  "_id": {
+    "$oid": "67819055f1b87b4826cb0ce2"
+  },
+  "name": "Spongebob",
+  "age": 30,
+  "gpa": 3.2,
+  "fullTime": false
+},
+{
+  "_id": {
+    "$oid": "6781914ff1b87b4826cb0ce3"
+  },
+  "name": "Patrick",
+  "age": 38,
+  "gpa": 1.5,
+  "fullTime": false
+},
+{
+  "_id": {
+    "$oid": "6781914ff1b87b4826cb0ce4"
+  },
+  "name": "Sandy",
+  "age": 27,
+  "gpa": 4,
+  "fullTime": true
+},
+{
+  "_id": {
+    "$oid": "6781914ff1b87b4826cb0ce5"
+  },
+  "name": "Gary",
+  "age": 18,
+  "gpa": 2.5,
+  "fullTime": true
+},
+{
+  "_id": {
+    "$oid": "67819215fa6abe230c6a841a"
+  },
+  "name": "Mr.Crabs",
+  "age": 30,
+  "gpa": 3.2,
+  "fullTime": false
+},
+{
+  "_id": {
+    "$oid": "67819282fa6abe230c6a841c"
+  },
+  "name": "Guy1",
+  "age": 27,
+  "gpa": 1,
+  "fullTime": false
+},
+{
+  "_id": {
+    "$oid": "67819282fa6abe230c6a841d"
+  },
+  "name": "Guy2",
+  "age": 28,
+  "gpa": 2,
+  "fullTime": false
+},
+{
+  "_id": {
+    "$oid": "67819282fa6abe230c6a841e"
+  },
+  "name": "Guy3",
+  "age": 29,
+  "gpa": 3,
+  "fullTime": false
+},
+{
+  "_id": {
+    "$oid": "67840468fb1b102c747daf2e"
+  },
+  "name": "Larry",
+  "age": 32,
+  "gpa": 2.8,
+  "fullTime": false,
+  "registerDate": {
+    "$date": "1970-01-01T00:00:00.000Z"
+  },
+  "graduationDate": null,
+  "courses": [
+    "Biology",
+    "Chemistry",
+    "Calculus"
+  ],
+  "address": {
+    "street": "123 Fake ST.",
+    "city": "Bikini Bottom",
+    "zip": 12345
+  }
+}]
